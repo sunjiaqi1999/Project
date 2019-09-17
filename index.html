@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>demo</title>
+  <link href="./static/icon/sjq.jpg" type="image/x-icon" rel="shortcut icon" />
+  <script>
+    // 这里设置全局rem
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt =
+        'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          // 当在大屏设备查看时限制页面的宽度，使其在大屏上保持750px的宽度,即页面中白色区域
+          if (clientWidth > 750) clientWidth = 750;
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+  </script>
+  <style>
+    html,
+    body {
+      background: #e3e3e3;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
